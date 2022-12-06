@@ -16,18 +16,11 @@ pub fn run(input: &str) {
     // front of vectors will be the bottom of the stack
     // push/pop will be from the end of the vector
     let mut stacks: Vec<Vec<char>> = vec![Vec::new(); num_stacks];
-    for i in (0..(blank_idx - 1)).rev() {
-        let line = lines[i];
-        let chunks = line
-                        .chars()
-                        .collect::<Vec<char>>()
-                        .chunks(4)
-                        .map(|c| c.iter().collect::<String>())
-                        .collect::<Vec<String>>();
-        for i in 0..num_stacks {
-            let topush = chunks[i].chars().nth(1).unwrap();
+    for i in (0..(blank_idx - 1)).rev() {  // bottom to top of stacks
+        for j in 0..num_stacks {  // at each level, add to each stack
+            let topush = lines[i].chars().nth(j*4 + 1).unwrap();
             if topush != ' ' {
-                stacks[i].push(topush);
+                stacks[j].push(topush);
             }
         }
     }
