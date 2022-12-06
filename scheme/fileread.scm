@@ -30,8 +30,11 @@
                       words)))))
   (loop "" s '()))
 
-(define (split-string-space s)
-  (split-string s " "))
+(define (split-string-fn delim)
+  ; returns a function which splits can split a string on delim
+  (define (split-string-delim s)
+    (split-string s delim))
+  split-string-delim)
 
 (define (read-file-split-spaces filename)
-  (map split-string-space (read-file-as-list filename)))
+  (map (split-string-fn " ") (read-file-as-list filename)))
