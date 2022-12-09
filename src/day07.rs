@@ -48,7 +48,7 @@ impl DirNode {
                 .filter(|x| *x >= thresh)
                 .min();
         let best = match childbest {
-            Some(x) => if *x < total { *x } else { total },
+            Some(x) => if *x < total || total < thresh { *x } else { total },
             None => total
         };
         return best
