@@ -16,16 +16,18 @@ pub fn run(input: &str) {
     // front of vectors will be the bottom of the stack
     // push/pop will be from the end of the vector
     let mut stacks: Vec<Vec<char>> = vec![Vec::new(); num_stacks];
-    for i in (0..(blank_idx - 1)).rev() {  // bottom to top of stacks
-        for j in 0..num_stacks {  // at each level, add to each stack
-            let topush = lines[i].chars().nth(j*4 + 1).unwrap();
+    for i in (0..(blank_idx - 1)).rev() {
+        // bottom to top of stacks
+        for j in 0..num_stacks {
+            // at each level, add to each stack
+            let topush = lines[i].chars().nth(j * 4 + 1).unwrap();
             if topush != ' ' {
                 stacks[j].push(topush);
             }
         }
     }
 
-    let mut stacks2 = stacks.clone();  // for part 2
+    let mut stacks2 = stacks.clone(); // for part 2
 
     // follow crane operations
     for line in lines[(blank_idx + 1)..].iter() {
@@ -33,7 +35,8 @@ pub fn run(input: &str) {
         let n_to_move = words[1].parse::<usize>().unwrap();
         let src = words[3].parse::<usize>().unwrap() - 1;
         let dst = words[5].parse::<usize>().unwrap() - 1;
-        for _i in 0..n_to_move {  // pt1
+        for _i in 0..n_to_move {
+            // pt1
             let c = stacks[src].pop().unwrap();
             stacks[dst].push(c);
         }

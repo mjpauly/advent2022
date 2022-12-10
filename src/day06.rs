@@ -7,7 +7,7 @@ pub fn run(input: &str) {
 
 fn find_marker(line: &str, marker_len: usize) -> usize {
     for i in marker_len..line.len() {
-        let substr = &line[(i-marker_len)..i];
+        let substr = &line[(i - marker_len)..i];
         if all_unique(substr) {
             return i;
         }

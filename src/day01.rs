@@ -11,10 +11,15 @@ pub fn run(input: &str) {
     }
     replace_smallest_if_bigger(&mut top_three, cur_cals);
 
-    println!("Three elves with the most calories are each carrying: \n\
-             {:?} calories respectively.", top_three);
-    println!("Collectively they are carrying {} calories in total.",
-             top_three.iter().sum::<i32>());
+    println!(
+        "Three elves with the most calories are each carrying: \n\
+             {:?} calories respectively.",
+        top_three
+    );
+    println!(
+        "Collectively they are carrying {} calories in total.",
+        top_three.iter().sum::<i32>()
+    );
 }
 
 fn replace_smallest_if_bigger(top_three: &mut Vec<i32>, cur_cals: i32) {

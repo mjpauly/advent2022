@@ -17,10 +17,14 @@ fn round_score_part1(guide: &str) -> i32 {
     let p1 = move_to_num(p1);
     let p2 = move_to_num(p2);
     let r = (p2 - p1).rem_euclid(3);
-    let score = p2 + 1 + match r {2 => 0,
-                                  0 => 3,
-                                  1 => 6,
-                                  _ => panic!()};
+    let score = p2
+        + 1
+        + match r {
+            2 => 0,
+            0 => 3,
+            1 => 6,
+            _ => panic!(),
+        };
     score
 }
 
@@ -30,16 +34,22 @@ fn round_score_part2(guide: &str) -> i32 {
     let p1 = move_to_num(p1);
     let win_lose = move_to_num(p2);
     let p2 = (p1 + win_lose - 1).rem_euclid(3);
-    let score = p2 + 1 + match win_lose {0 => 0,
-                                         1 => 3,
-                                         2 => 6,
-                                         _ => panic!()};
+    let score = p2
+        + 1
+        + match win_lose {
+            0 => 0,
+            1 => 3,
+            2 => 6,
+            _ => panic!(),
+        };
     score
 }
 
 fn move_to_num(m: char) -> i32 {
-    match m {'A' | 'X' => 0,
-             'B' | 'Y' => 1,
-             'C' | 'Z' => 2,
-             _ => panic!()}
+    match m {
+        'A' | 'X' => 0,
+        'B' | 'Y' => 1,
+        'C' | 'Z' => 2,
+        _ => panic!(),
+    }
 }

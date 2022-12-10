@@ -22,8 +22,8 @@ pub fn run(input: &str) {
 
 fn shared_item_priority(rucksack: &str) -> u32 {
     let len = rucksack.chars().count();
-    let a = pouch_contents(&rucksack[..(len/2)]);
-    let b = pouch_contents(&rucksack[(len/2)..]);
+    let a = pouch_contents(&rucksack[..(len / 2)]);
+    let b = pouch_contents(&rucksack[(len / 2)..]);
     let intersection: Vec<_> = a.intersection(&b).collect();
     assert_eq!(intersection.len(), 1);
     let shared = intersection[0];
@@ -38,7 +38,7 @@ fn pouch_contents(pouch: &str) -> HashSet<char> {
 
 fn score_item(item: char) -> u32 {
     let ord: u32 = item.into();
-    let a   : u32 = 'a'.into();
+    let a: u32 = 'a'.into();
     let biga: u32 = 'A'.into();
     if item.is_uppercase() {
         return ord - biga + 1 + 26;
@@ -51,7 +51,7 @@ fn pt2_priority(group: &Vec<String>) -> u32 {
     let b = pouch_contents(group[1].as_str());
     let c = pouch_contents(group[2].as_str());
     let d: HashSet<char> = a.intersection(&b).copied().collect();
-    let e: Vec<&char>    = c.intersection(&d).collect();
+    let e: Vec<&char> = c.intersection(&d).collect();
     assert_eq!(e.len(), 1);
     let shared = e[0];
     score_item(*shared)
