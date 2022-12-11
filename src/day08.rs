@@ -67,11 +67,11 @@ impl ForestMethods for Forest {
     fn get_cardinal_rows(&self, i: usize, j: usize) -> [TreeRow; 4] {
         // gets a vector of all the TreeRows in each cardinal direction from
         // a given tree, ordered with increasing distance from the tree
-        let north: TreeRow = self[..i].iter().map(|x| x[j]).rev().collect();
-        let east: TreeRow = self[i][(j + 1)..].to_vec();
-        let south: TreeRow = self[(i + 1)..].iter().map(|x| x[j]).collect();
-        let west: TreeRow = self[i][..j].iter().map(|x| *x).rev().collect();
-        [north, east, south, west]
+        let n: TreeRow = self[..i].iter().map(|x| x[j]).rev().collect();
+        let e: TreeRow = self[i][(j + 1)..].to_vec();
+        let s: TreeRow = self[(i + 1)..].iter().map(|x| x[j]).collect();
+        let w: TreeRow = self[i][..j].iter().map(|x| *x).rev().collect();
+        [n, e, s, w]
     }
 
     fn count_visible(&self) -> u32 {
